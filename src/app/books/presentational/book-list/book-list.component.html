@@ -1,0 +1,7 @@
+<mat-selection-list #book *ngIf="books?.length; else noBooks">
+  <mat-list-option *ngFor="let book of books">
+    {{book.title}}
+  </mat-list-option>
+</mat-selection-list>
+
+<ng-template #nobooks>No Books to show</ng-template>

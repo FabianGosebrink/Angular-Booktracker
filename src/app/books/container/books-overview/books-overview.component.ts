@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BookService } from '../../../core/services/book.service';
+import { Book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-books-overview',
@@ -6,14 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./books-overview.component.css'],
 })
 export class BooksOverviewComponent implements OnInit {
-  typesOfShoes: string[] = [
-    'Boots',
-    'Clogs',
-    'Loafers',
-    'Moccasins',
-    'Sneakers',
-  ];
-  constructor() {}
+  books$: Observable<Book[]>;
 
-  ngOnInit() {}
+  constructor(private readonly bookService: BookService) {}
+
+  ngOnInit() {
+    this.books$ = this.bookService.getAllBooks();
+  }
 }
