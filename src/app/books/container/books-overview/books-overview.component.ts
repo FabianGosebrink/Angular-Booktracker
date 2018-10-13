@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-comp1',
-  templateUrl: './comp1.component.html',
-  styleUrls: ['./comp1.component.css'],
+  selector: 'app-books-overview',
+  templateUrl: './books-overview.component.html',
+  styleUrls: ['./books-overview.component.css'],
 })
-export class Comp1Component implements OnInit {
+export class BooksOverviewComponent implements OnInit {
   typesOfShoes: string[] = [
     'Boots',
     'Clogs',

@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'Book tracker';
 
   navItems: any[] = [
-    { name: 'Overview', route: 'comp1' },
-    { name: 'Add new book', route: 'comp2' },
+    { name: 'Overview', route: 'books' },
+    { name: 'Add new book', route: 'books/create' },
   ];
 }
