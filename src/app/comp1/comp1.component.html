@@ -1,0 +1,20 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label="to buy">
+    <mat-selection-list #shoes>
+      <mat-list-option *ngFor="let shoe of typesOfShoes">
+        {{shoe}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-tab>
+  <mat-tab label="read already">
+    <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<button mat-fab class="fab-bottom-right">
+  <a [routerLink]="['/comp2']">
+    <mat-icon>add</mat-icon>
+  </a>
+</button>
