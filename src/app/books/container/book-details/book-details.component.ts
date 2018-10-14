@@ -20,8 +20,8 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.book$ = this.activatedRoute.params.pipe(
-      map(p => p.id),
-      switchMap(id => this.bookService.getSingle(+id))
+      map(p => +p.id),
+      switchMap(id => this.bookService.getSingle(id))
     );
   }
 }
