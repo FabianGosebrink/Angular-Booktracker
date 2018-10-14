@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { BookService } from 'src/app/core/services/book.service';
+import { Book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-book-details',
@@ -6,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
+  book$: Observable<Book>;
 
-  constructor() { }
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly bookService: BookService
+  ) {}
 
   ngOnInit() {
+    this.book$ = this.activatedRoute.params.pipe(
+      map(p => p.id),
+      switchMap(id => this.bookService.getSingle(+id))
+    );
   }
-
 }

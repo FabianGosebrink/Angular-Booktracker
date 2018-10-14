@@ -1,3 +1,9 @@
-<p>
-  book-details works!
+<div class="button-row">
+  <a mat-raised-button routerLink="/books/overview">To Overview</a>
+</div>
+
+<p *ngIf="book$ | async as book; else noBook">
+  {{book | json}}
 </p>
+
+<ng-template #noBook>Could not find the book</ng-template>

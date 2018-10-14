@@ -10,6 +10,8 @@ import { BookService } from '../../../core/services/book.service';
 })
 export class CreateBookComponent implements OnInit {
   form: FormGroup;
+  genres = [];
+
   constructor(
     private readonly bookService: BookService,
     private readonly router: Router
@@ -22,10 +24,11 @@ export class CreateBookComponent implements OnInit {
       description: new FormControl('', Validators.required),
       genre: new FormControl('')
     });
+
+    this.genres = this.bookService.getAllGenres();
   }
 
-  addBook(event: MouseEvent) {
-    event.preventDefault();
+  addBook() {
     this.bookService.add(this.form.value);
 
     this.form.reset();

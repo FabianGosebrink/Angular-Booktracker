@@ -32,6 +32,27 @@ export class BookService {
     return of(this.books);
   }
 
+  getSingle(bookId: number) {
+    return of(this.books.find(x => x.id === bookId));
+  }
+
+  getAllGenres() {
+    return [
+      { value: 'Tragedy', displayName: 'Tragedy' },
+      { value: 'Tragic comedy', displayName: 'Tragic comedy' },
+      { value: 'Fantasy', displayName: 'Fantasy' },
+      { value: 'Mythology', displayName: 'Mythology' },
+      { value: 'Adventure', displayName: 'Adventure' },
+      { value: 'Mystery', displayName: 'Mystery' },
+      { value: 'Science-Fiction', displayName: 'Science fiction' },
+      { value: 'Drama', displayName: 'Drame' },
+      { value: 'Romance', displayName: 'Romance' },
+      { value: 'Action-Adventure', displayName: 'Action / Adventure' },
+      { value: 'Satire', displayName: 'Satire' },
+      { value: 'Horror', displayName: 'Horror' }
+    ];
+  }
+
   update(updated: Book) {
     const existing = this.books.find(x => x.id === updated.id);
     const index = this.books.indexOf(existing);

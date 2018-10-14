@@ -1,8 +1,8 @@
 <div class="button-row">
-  <a mat-raised-button routerLink="/books/overview">Back</a>
+  <a mat-raised-button routerLink="/books/overview">To Overview</a>
 </div>
 
-<form (ngSubmit)="addBook($event)" [formGroup]="form">
+<form (ngSubmit)="addBook()" [formGroup]="form">
   <div class="form-container">
     <mat-form-field>
       <input matInput placeholder="Title" formControlName="title">
@@ -17,8 +17,10 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
+      <mat-select placeholder="Genre" formControlName="genre">
+        <mat-option *ngFor="let genre of genres" [value]="genre.value">
+          {{genre.displayName}}
+        </mat-option>
       </mat-select>
     </mat-form-field>
 
