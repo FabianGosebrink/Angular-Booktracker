@@ -1,9 +1,9 @@
 <mat-tab-group dynamicHeight>
-  <mat-tab label="to buy">
-    <app-book-list [books]="books$ | async"></app-book-list>
+  <mat-tab *ngIf="unreadBooks$ | async as unreadBooks" label="to buy ({{unreadBooks.length}})">
+    <app-book-list [books]="unreadBooks" (markAsRead)="markAsRead($event)"></app-book-list>
   </mat-tab>
-  <mat-tab label="read already">
-    <app-book-list></app-book-list>
+  <mat-tab *ngIf="readBooks$ | async as readBooks" label="read already ({{readBooks.length}})">
+    <app-book-list [books]="readBooks"></app-book-list>
   </mat-tab>
 </mat-tab-group>
 

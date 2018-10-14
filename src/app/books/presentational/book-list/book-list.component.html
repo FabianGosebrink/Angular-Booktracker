@@ -1,17 +1,9 @@
-<!-- <mat-selection-list #book *ngIf="books.length; else noBooks">
-  <mat-list-option *ngFor="let book of books">
-    <mat-icon matListIcon>book</mat-icon>
-    {{book.title}}
-    <a mat-raised-button [routerLink]="['/books/details/', book.id]">Details</a>
-  </mat-list-option>
-</mat-selection-list> -->
-
 <mat-list *ngIf="books.length; else noBooks">
   <mat-list-item *ngFor="let book of books">
     {{book.title}}
     <span class="fill-remaining-space"></span>
     <a mat-raised-button [routerLink]="['/books/details/', book.id]">Details</a>
-    <button mat-raised-button color="primary">Mark Read</button>
+    <button mat-raised-button color="primary" (click)="markBookAsRead(book)">Mark Read</button>
   </mat-list-item>
 </mat-list>
 

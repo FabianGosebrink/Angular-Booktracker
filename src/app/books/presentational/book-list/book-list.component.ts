@@ -1,16 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css'],
+  styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
   @Input()
   books: Book[] = [];
 
+  @Output()
+  markAsRead = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {}
+
+  markBookAsRead(book: Book) {
+    this.markAsRead.emit(book);
+  }
 }
