@@ -8,7 +8,7 @@ import { Book } from '../../../shared/models/book';
 })
 export class BookListComponent implements OnInit {
   @Input()
-  books: Book[];
+  books: Book[] = [];
 
   constructor() {}
 
