@@ -30,7 +30,9 @@
     </mat-form-field>
 
     <div class="button-row">
-      <button mat-raised-button color="primary" [disabled]="form.invalid">Add Book</button>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">
+        {{!!this.form.value.id ? 'Update': 'Add'}}
+        Book</button>
     </div>
   </div>
 </form>

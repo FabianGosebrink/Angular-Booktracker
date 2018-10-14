@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material.module';
 import { BooksRoutes } from './books.routing';
@@ -16,6 +16,7 @@ import { BookListComponent } from './presentational/book-list/book-list.componen
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(BooksRoutes)
   ],
   exports: [],
