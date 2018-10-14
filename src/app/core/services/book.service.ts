@@ -39,4 +39,11 @@ export class BookService {
 
     return of([this.books]);
   }
+
+  add(book: Book) {
+    const maxId = Math.max(...this.books.map(o => o.id), 0);
+    book.id = maxId + 1;
+    this.books.push(book);
+    return of([this.books]);
+  }
 }

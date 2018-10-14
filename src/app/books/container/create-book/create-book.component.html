@@ -2,22 +2,28 @@
   <a mat-raised-button routerLink="/books/overview">Back</a>
 </div>
 
-<div class="form-container">
-  <mat-form-field>
-    <input matInput placeholder="Input">
-  </mat-form-field>
+<form (ngSubmit)="addBook($event)" [formGroup]="form">
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
 
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Author" formControlName="author">
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+    </mat-form-field>
 
-  <div class="button-row">
-    <button mat-raised-button color="primary">Add Book</button>
+    <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" [disabled]="form.invalid">Add Book</button>
+    </div>
   </div>
-</div>
+</form>

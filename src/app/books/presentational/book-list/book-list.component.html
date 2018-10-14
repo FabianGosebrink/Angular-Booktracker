@@ -3,7 +3,8 @@
     {{book.title}}
     <span class="fill-remaining-space"></span>
     <a mat-raised-button [routerLink]="['/books/details/', book.id]">Details</a>
-    <button mat-raised-button color="primary" (click)="markBookAsRead(book)">Mark Read</button>
+    <button *ngIf="!book.read" mat-raised-button color="primary" (click)="toggleBookRead(book)">Mark Read</button>
+    <button *ngIf="book.read" mat-raised-button color="primary" (click)="toggleBookRead(book)">Mark as unread</button>
   </mat-list-item>
 </mat-list>
 

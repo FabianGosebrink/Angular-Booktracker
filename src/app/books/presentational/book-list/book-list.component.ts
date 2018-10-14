@@ -11,13 +11,14 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
 
   @Output()
-  markAsRead = new EventEmitter();
+  bookReadChanged = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  markBookAsRead(book: Book) {
-    this.markAsRead.emit(book);
+  toggleBookRead(book: Book) {
+    book.read = !book.read;
+    this.bookReadChanged.emit(book);
   }
 }

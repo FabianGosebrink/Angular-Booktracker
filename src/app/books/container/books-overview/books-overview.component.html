@@ -1,13 +1,14 @@
 <mat-tab-group dynamicHeight>
   <mat-tab *ngIf="unreadBooks$ | async as unreadBooks" label="to buy ({{unreadBooks.length}})">
-    <app-book-list [books]="unreadBooks" (markAsRead)="markAsRead($event)"></app-book-list>
+    <app-book-list [books]="unreadBooks" (bookReadChanged)="toggleBookRead($event)"></app-book-list>
   </mat-tab>
   <mat-tab *ngIf="readBooks$ | async as readBooks" label="read already ({{readBooks.length}})">
-    <app-book-list [books]="readBooks"></app-book-list>
+    <app-book-list [books]="readBooks" (bookReadChanged)="toggleBookRead($event)"></app-book-list>
   </mat-tab>
 </mat-tab-group>
 
-<button mat-fab class="fab-bottom-right">
+<button mat-fab class="
+      fab-bottom-right">
   <a [routerLink]="['/books/create']">
     <mat-icon>add</mat-icon>
   </a>

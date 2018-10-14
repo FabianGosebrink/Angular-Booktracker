@@ -19,8 +19,7 @@ export class BooksOverviewComponent implements OnInit {
     this.getAllBooks();
   }
 
-  markAsRead(book: Book) {
-    book.read = true;
+  toggleBookRead(book: Book) {
     this.bookService.update(book);
     this.getAllBooks();
   }
