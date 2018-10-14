@@ -49,7 +49,8 @@ export class BookService {
       { value: 'Romance', displayName: 'Romance' },
       { value: 'Action / Adventure', displayName: 'Action / Adventure' },
       { value: 'Satire', displayName: 'Satire' },
-      { value: 'Horror', displayName: 'Horror' }
+      { value: 'Horror', displayName: 'Horror' },
+      { value: 'Novel', displayName: 'Novel' }
     ];
   }
 

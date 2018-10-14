@@ -2,8 +2,12 @@
   <a mat-raised-button routerLink="/books/overview">To Overview</a>
 </div>
 
-<p *ngIf="book$ | async as book; else noBook">
+<div *ngIf="book$ | async as book; else noBook">
   {{book | json}}
-</p>
+
+  <div class="button-row">
+    <a mat-raised-button [routerLink]="['/books/create/', book.id]">Edit</a>
+  </div>
+</div>
 
 <ng-template #noBook>Could not find the book</ng-template>
