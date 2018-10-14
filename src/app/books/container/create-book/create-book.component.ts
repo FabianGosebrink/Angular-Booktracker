@@ -38,9 +38,6 @@ export class CreateBookComponent implements OnInit {
       this.bookService.add(this.form.value);
       this.notificationService.show('Book added');
     }
-
-    this.form.reset();
-    this.router.navigate(['/books/overview']);
   }
 
   private paramIsGiven(param: string) {
