@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookService } from '../../../core/services/book.service';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-create-book',
@@ -14,7 +15,8 @@ export class CreateBookComponent implements OnInit {
 
   constructor(
     private readonly bookService: BookService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class CreateBookComponent implements OnInit {
 
   addBook() {
     this.bookService.add(this.form.value);
-
+    this.notificationService.show('Book added');
     this.form.reset();
     this.router.navigate(['/books/overview']);
   }
