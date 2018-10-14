@@ -7,6 +7,7 @@ import { BooksRoutes } from './books.routing';
 import { BooksOverviewComponent } from './container/books-overview/books-overview.component';
 import { CreateBookComponent } from './container/create-book/create-book.component';
 import { BookListComponent } from './presentational/book-list/book-list.component';
+import { BookDetailsComponent } from './container/book-details/book-details.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { BookListComponent } from './presentational/book-list/book-list.componen
     BooksOverviewComponent,
     CreateBookComponent,
     BookListComponent,
+    BookDetailsComponent,
   ],
   providers: [],
 })
