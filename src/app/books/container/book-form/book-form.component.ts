@@ -5,11 +5,11 @@ import { BookService } from '../../../core/services/book.service';
 import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
-  selector: 'app-create-book',
-  templateUrl: './create-book.component.html',
-  styleUrls: ['./create-book.component.css']
+  selector: 'app-book-form',
+  templateUrl: './book-form.component.html',
+  styleUrls: ['./book-form.component.css']
 })
-export class CreateBookComponent implements OnInit {
+export class BookFormComponent implements OnInit {
   form: FormGroup;
   genres = [];
 
