@@ -125,7 +125,7 @@ namespace Backend.Controllers
 
         [HttpPut]
         [Route("{id:int}", Name = nameof(Update))]
-        public ActionResult<BookDto> Update(int id, [FromBody] BookDto updateDto)
+        public ActionResult<BookDto> Update(int id, [FromBody] BookUpdateDto updateDto)
         {
             if (updateDto == null)
             {

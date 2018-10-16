@@ -7,7 +7,7 @@ import { Book } from '../../../shared/models/book';
 @Component({
   selector: 'app-books-overview',
   templateUrl: './books-overview.component.html',
-  styleUrls: ['./books-overview.component.css']
+  styleUrls: ['./books-overview.component.css'],
 })
 export class BooksOverviewComponent implements OnInit {
   unreadBooks$: Observable<Book[]>;
@@ -20,8 +20,9 @@ export class BooksOverviewComponent implements OnInit {
   }
 
   toggleBookRead(book: Book) {
-    this.bookService.update(book);
-    this.getAllBooks();
+    this.bookService.update(book).subscribe(() => {
+      this.getAllBooks();
+    });
   }
 
   private getAllBooks() {

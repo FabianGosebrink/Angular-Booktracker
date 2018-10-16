@@ -44,3 +44,5 @@ Thumbs.db
 /backend/aspnetcore/bin
 /backend/aspnetcore/.vscode
 /frontend/node_modules/
+/backend/aspnetcore/.vs
+/backend/aspnetcore/Backend.csproj.user

@@ -14,7 +14,7 @@ export class HttpBaseService {
     return this.http.post<T>(url, body);
   }
 
-  put<T>(url: string, body: string): Observable<T> {
+  put<T>(url: string, body: any): Observable<T> {
     return this.http.put<T>(url, body);
   }
 
@@ -22,7 +22,7 @@ export class HttpBaseService {
     return this.http.delete<T>(url);
   }
 
-  patch<T>(url: string, body: string): Observable<T> {
+  patch<T>(url: string, body: any): Observable<T> {
     return this.http.patch<T>(url, body);
   }
 }

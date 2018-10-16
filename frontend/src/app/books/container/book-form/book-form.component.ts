@@ -7,7 +7,7 @@ import { NotificationService } from '../../../core/services/notification.service
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.css']
+  styleUrls: ['./book-form.component.css'],
 })
 export class BookFormComponent implements OnInit {
   form: FormGroup;
@@ -32,11 +32,13 @@ export class BookFormComponent implements OnInit {
 
   addOrUpdateBook() {
     if (!!this.form.value.id) {
-      this.bookService.update(this.form.value);
-      this.notificationService.show('Book updated');
+      this.bookService
+        .update(this.form.value)
+        .subscribe(() => this.notificationService.show('Book updated'));
     } else {
-      this.bookService.add(this.form.value);
-      this.notificationService.show('Book added');
+      this.bookService
+        .add(this.form.value)
+        .subscribe(() => this.notificationService.show('Book added'));
     }
   }
 
@@ -50,7 +52,7 @@ export class BookFormComponent implements OnInit {
       title: new FormControl('', Validators.required),
       author: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      genre: new FormControl('')
+      genre: new FormControl(''),
     });
   }
 
