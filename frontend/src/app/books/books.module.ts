@@ -5,10 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { BooksRoutes } from './books.routing';
-import { BookDetailsComponent } from './container/book-details/book-details.component';
-import { BooksOverviewComponent } from './container/books-overview/books-overview.component';
-import { CreateBookComponent } from './container/create-book/create-book.component';
-import { BookListComponent } from './presentational/book-list/book-list.component';
+import { allContainerComponents } from './container';
+import { allPresentationalComponents } from './presentational';
 
 @NgModule({
   imports: [
@@ -17,15 +15,10 @@ import { BookListComponent } from './presentational/book-list/book-list.componen
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forChild(BooksRoutes),
+    RouterModule.forChild(BooksRoutes)
   ],
   exports: [],
-  declarations: [
-    BooksOverviewComponent,
-    CreateBookComponent,
-    BookListComponent,
-    BookDetailsComponent,
-  ],
-  providers: [],
+  declarations: [...allContainerComponents, ...allPresentationalComponents],
+  providers: []
 })
 export class BooksModule {}
