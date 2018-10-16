@@ -1,23 +1,18 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../../shared/models/book';
 import { HttpBaseService } from './http-base.service';
 
 @Injectable({ providedIn: 'root' })
 export class BookService {
-  constructor(
-    private readonly httpBase: HttpBaseService,
-    private http: HttpClient
-  ) {}
+  private url = `https://localhost:5001/api/books`;
+  constructor(private readonly httpBase: HttpBaseService) {}
 
   getAllBooks() {
-    return this.httpBase.get<Book[]>(`https://localhost:44378/api/books`);
+    return this.httpBase.get<Book[]>(this.url);
   }
 
   getSingle(bookId: number) {
-    return this.httpBase.get<Book>(
-      `https://localhost:44378/api/books/${bookId}`
-    );
+    return this.httpBase.get<Book>(`${this.url}/${bookId}`);
   }
 
   getAllGenres() {
@@ -39,13 +34,10 @@ export class BookService {
   }
 
   update(updated: Book) {
-    return this.http.put<Book>(
-      `https://localhost:44378/api/books/${updated.id}`,
-      updated
-    );
+    return this.httpBase.put<Book>(`${this.url}/${updated.id}`, updated);
   }
 
   add(book: Book) {
-    return this.httpBase.post(`https://localhost:44378/api/books`, book);
+    return this.httpBase.post(this.url, book);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, publishReplay, refCount } from 'rxjs/operators';
 import { BookService } from '../../../core/services/book.service';
 import { Book } from '../../../shared/models/book';
 
@@ -26,7 +26,10 @@ export class BooksOverviewComponent implements OnInit {
   }
 
   private getAllBooks() {
-    const observable = this.bookService.getAllBooks();
+    const observable = this.bookService.getAllBooks().pipe(
+      publishReplay(1),
+      refCount()
+    );
 
     this.unreadBooks$ = observable.pipe(
       map(books => books.filter(book => !book.read))
