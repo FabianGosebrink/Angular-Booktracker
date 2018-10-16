@@ -37,3 +37,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/backend/aspnetcore/.vscode/launch.json
+/backend/aspnetcore/bin/Debug/netcoreapp2.1/Backend.pdb
+/backend/aspnetcore/obj
+/backend/aspnetcore/bin
+/backend/aspnetcore/.vscode
+/frontend/node_modules/
