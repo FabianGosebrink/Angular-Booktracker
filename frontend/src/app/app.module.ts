@@ -18,9 +18,9 @@ import { MaterialModule } from './shared/material.module';
     BrowserAnimationsModule,
     MaterialModule,
 
-    RouterModule.forRoot(AppRoutes, { useHash: true })
+    RouterModule.forRoot(AppRoutes, { useHash: true }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
