@@ -29,7 +29,6 @@ namespace Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddOptions();
             services.AddDbContext<BookDbContext>(opt => opt.UseInMemoryDatabase("BookDatabase"));
             services.AddCors(options =>
             {
@@ -37,7 +36,7 @@ namespace Backend
                     builder =>
                     {
                         builder
-                            .AllowAnyOrigin()
+                            .WithOrigins("http://localhost:4200")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
@@ -49,7 +48,7 @@ namespace Backend
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "My first ASP.NET Core WebAPI", Version = "v1" });
             });
         }
 
@@ -87,7 +86,7 @@ namespace Backend
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Version 1");
                 c.RoutePrefix = string.Empty;
             });
 
