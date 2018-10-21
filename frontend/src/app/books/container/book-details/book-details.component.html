@@ -27,6 +27,7 @@
 
   <div class="button-row">
     <a mat-raised-button color="primary" [routerLink]="['/books/edit/', book.id]">Edit</a>
+    <a mat-raised-button color="primary" (click)="deleteBook(book)">Delete</a>
   </div>
 </div>
 
