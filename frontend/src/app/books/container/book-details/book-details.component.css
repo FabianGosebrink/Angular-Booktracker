@@ -5,3 +5,7 @@
 .mat-input-element:disabled {
   color: gray;
 }
+
+.mat-raised-button {
+  margin-right: 10px;
+}
