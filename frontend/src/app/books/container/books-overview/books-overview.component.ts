@@ -7,7 +7,7 @@ import { Book } from '../../../shared/models/book';
 @Component({
   selector: 'app-books-overview',
   templateUrl: './books-overview.component.html',
-  styleUrls: ['./books-overview.component.css'],
+  styleUrls: ['./books-overview.component.css']
 })
 export class BooksOverviewComponent implements OnInit {
   unreadBooks$: Observable<Book[]>;
@@ -26,16 +26,16 @@ export class BooksOverviewComponent implements OnInit {
   }
 
   private getAllBooks() {
-    const observable = this.bookService.getAllBooks().pipe(
+    const allBooks$ = this.bookService.getAllBooks().pipe(
       publishReplay(1),
       refCount()
     );
 
-    this.unreadBooks$ = observable.pipe(
+    this.unreadBooks$ = allBooks$.pipe(
       map(books => books.filter(book => !book.read))
     );
 
-    this.readBooks$ = observable.pipe(
+    this.readBooks$ = allBooks$.pipe(
       map(books => books.filter(book => book.read))
     );
   }
