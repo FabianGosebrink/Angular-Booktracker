@@ -40,4 +40,8 @@ export class BookService {
   add(book: Book) {
     return this.httpBase.post(this.url, book);
   }
+
+  delete(bookId: number) {
+    return this.httpBase.delete(`${this.url}/${bookId}`);
+  }
 }
