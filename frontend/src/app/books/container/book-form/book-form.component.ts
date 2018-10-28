@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../../core/services/book.service';
 import { NotificationService } from '../../../core/services/notification.service';
 
@@ -15,7 +15,6 @@ export class BookFormComponent implements OnInit {
 
   constructor(
     private readonly bookService: BookService,
-    private readonly router: Router,
     private readonly notificationService: NotificationService,
     private readonly activatedRoute: ActivatedRoute
   ) {}
