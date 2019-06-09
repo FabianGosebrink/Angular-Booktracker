@@ -4,15 +4,15 @@ import { HttpBaseService } from './http-base.service';
 
 @Injectable({ providedIn: 'root' })
 export class BookService {
-  private url = `https://localhost:5001/api/books`;
+  private endpoint = `books`;
   constructor(private readonly httpBase: HttpBaseService) {}
 
   getAllBooks() {
-    return this.httpBase.get<Book[]>(this.url);
+    return this.httpBase.get<Book[]>(this.endpoint);
   }
 
   getSingle(bookId: number) {
-    return this.httpBase.get<Book>(`${this.url}/${bookId}`);
+    return this.httpBase.get<Book>(`${this.endpoint}/${bookId}`);
   }
 
   getAllGenres() {
@@ -29,19 +29,19 @@ export class BookService {
       { value: 'Action / Adventure', displayName: 'Action / Adventure' },
       { value: 'Satire', displayName: 'Satire' },
       { value: 'Horror', displayName: 'Horror' },
-      { value: 'Novel', displayName: 'Novel' },
+      { value: 'Novel', displayName: 'Novel' }
     ];
   }
 
   update(updated: Book) {
-    return this.httpBase.put<Book>(`${this.url}/${updated.id}`, updated);
+    return this.httpBase.put<Book>(`${this.endpoint}/${updated.id}`, updated);
   }
 
   add(book: Book) {
-    return this.httpBase.post(this.url, book);
+    return this.httpBase.post(this.endpoint, book);
   }
 
   delete(bookId: number) {
-    return this.httpBase.delete(`${this.url}/${bookId}`);
+    return this.httpBase.delete(`${this.endpoint}/${bookId}`);
   }
 }
