@@ -7,6 +7,7 @@ using Backend.Entities;
 using Backend.Repositories;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -22,10 +23,12 @@ namespace Backend.Controllers
         }
 
         [HttpGet(Name = nameof(GetAll))]
-        public IActionResult GetAll()
+        public IActionResult GetAll(bool? read = null)
         {
-            List<Book> items = _bookRepository.GetAll().ToList();
+            List<Book> items = _bookRepository.GetAll(read).ToList();
+
             IEnumerable<BookDto> toReturn = items.Select(x => Mapper.Map<BookDto>(x));
+
             return Ok(toReturn);
         }
 

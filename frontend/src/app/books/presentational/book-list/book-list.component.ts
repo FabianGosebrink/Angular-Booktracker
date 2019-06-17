@@ -7,11 +7,9 @@ import { Book } from '../../../shared/models/book';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  @Input()
-  books: Book[] = [];
+  @Input() books: Book[] = [];
 
-  @Output()
-  bookReadChanged = new EventEmitter();
+  @Output() bookReadChanged = new EventEmitter();
 
   constructor() {}
 

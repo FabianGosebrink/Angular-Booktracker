@@ -4,7 +4,7 @@ import { BookFormComponent } from './container/book-form/book-form.component';
 import { BooksOverviewComponent } from './container/books-overview/books-overview.component';
 
 export const BooksRoutes: Routes = [
-  { path: '', redirectTo: 'overview', pathMatch: 'full' },
+  { path: '', redirectTo: 'overview?read=false', pathMatch: 'full' },
   { path: 'overview', component: BooksOverviewComponent },
   { path: 'create', component: BookFormComponent },
   { path: 'edit/:id', component: BookFormComponent },

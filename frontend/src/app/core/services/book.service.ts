@@ -7,8 +7,8 @@ export class BookService {
   private endpoint = `books`;
   constructor(private readonly httpBase: HttpBaseService) {}
 
-  getAllBooks() {
-    return this.httpBase.get<Book[]>(this.endpoint);
+  getAllBooks(read: boolean) {
+    return this.httpBase.get<Book[]>(this.endpoint + '?read=' + read);
   }
 
   getSingle(bookId: number) {

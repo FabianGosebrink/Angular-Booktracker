@@ -1,15 +1,28 @@
-<mat-list *ngIf="books.length; else noBooks">
+<mat-list *ngIf="books?.length; else noBooks">
   <mat-list-item *ngFor="let book of books">
-
-    <h2 matLine>{{book.title}}</h2>
+    <h2 matLine>{{ book.title }}</h2>
     <p matLine>
-      <span> {{book.author}} - {{book.genre}}</span>
+      <span> {{ book.author }} - {{ book.genre }}</span>
     </p>
 
     <span class="fill-remaining-space"></span>
     <a mat-raised-button [routerLink]="['/books/details', book.id]">Details</a>
-    <button *ngIf="!book.read" mat-raised-button color="primary" (click)="toggleBookRead(book)">Read</button>
-    <button *ngIf="book.read" mat-raised-button color="primary" (click)="toggleBookRead(book)">Unread</button>
+    <button
+      *ngIf="!book.read"
+      mat-raised-button
+      color="primary"
+      (click)="toggleBookRead(book)"
+    >
+      Read
+    </button>
+    <button
+      *ngIf="book.read"
+      mat-raised-button
+      color="primary"
+      (click)="toggleBookRead(book)"
+    >
+      Unread
+    </button>
   </mat-list-item>
 </mat-list>
 

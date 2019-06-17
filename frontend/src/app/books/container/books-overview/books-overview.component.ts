@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, publishReplay, refCount } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { BookService } from '../../../core/services/book.service';
 import { Book } from '../../../shared/models/book';
+import { ActivatedRoute } from '@angular/router';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-books-overview',
@@ -10,10 +12,13 @@ import { Book } from '../../../shared/models/book';
   styleUrls: ['./books-overview.component.css']
 })
 export class BooksOverviewComponent implements OnInit {
-  unreadBooks$: Observable<Book[]>;
-  readBooks$: Observable<Book[]>;
+  books$: Observable<Book[]>;
 
-  constructor(private readonly bookService: BookService) {}
+  constructor(
+    private readonly bookService: BookService,
+    private route: ActivatedRoute,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit() {
     this.getAllBooks();
@@ -21,22 +26,15 @@ export class BooksOverviewComponent implements OnInit {
 
   toggleBookRead(book: Book) {
     this.bookService.update(book).subscribe(() => {
+      this.notificationService.show('book updated');
       this.getAllBooks();
     });
   }
 
   private getAllBooks() {
-    const allBooks$ = this.bookService.getAllBooks().pipe(
-      publishReplay(1),
-      refCount()
-    );
-
-    this.unreadBooks$ = allBooks$.pipe(
-      map(books => books.filter(book => !book.read))
-    );
-
-    this.readBooks$ = allBooks$.pipe(
-      map(books => books.filter(book => book.read))
+    this.books$ = this.route.queryParams.pipe(
+      map(x => x.read),
+      switchMap(read => this.bookService.getAllBooks(read))
     );
   }
 }

@@ -36,15 +36,16 @@ namespace Backend
                     builder =>
                     {
                         builder
-                            .WithOrigins("http://localhost:4200")
+                            .AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod();
+                            .AllowAnyMethod()
+                            .AllowCredentials();
                     });
             });
 
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSwaggerGen(c =>
             {
@@ -56,8 +57,6 @@ namespace Backend
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
             IHostingEnvironment env)
         {
-            loggerFactory.AddConsole();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

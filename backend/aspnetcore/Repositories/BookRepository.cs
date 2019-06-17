@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Backend.Entities;
 
 namespace Backend.Repositories
@@ -36,14 +37,26 @@ namespace Backend.Repositories
             return item;
         }
 
-        public IQueryable<Book> GetAll()
+        public IQueryable<Book> GetAll(bool? read)
         {
-            return _dbContext.Books;
+            IQueryable<Book> query = _dbContext.Books;
+
+            if (read.HasValue)
+            {
+                query = query.Where(x => x.Read == read.Value);
+            }
+
+            return query;
         }
 
-        public int Count()
+        public int Count(Expression<Func<Book, bool>> predicate = null)
         {
-            return _dbContext.Books.Count();
+            if (predicate == null)
+            {
+                return _dbContext.Books.Count();
+            }
+
+            return _dbContext.Books.Count(predicate);
         }
 
         public bool Save()
