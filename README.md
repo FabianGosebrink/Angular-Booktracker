@@ -1,6 +1,6 @@
 # Angular Booktracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4. Please use "npm update" in the frontend folder to load the missing modules like @angular-devkit/build-angular.
 
 ## Development server
 
